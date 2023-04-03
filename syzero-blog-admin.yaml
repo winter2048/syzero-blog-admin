@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    k8s.kuboard.cn/layer: web
+  name: blog-admin
+  namespace: blog
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      project: blog
+      app: admin
+  template:
+    metadata:
+      labels:
+        project: blog
+        app: admin
+    spec:
+      imagePullSecrets:
+      - name: registry-pull-secret
+      containers:
+      - name: admin
+        image: $IMAGE_NAME
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          name: web
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog-admin
+  namespace: blog
+  labels:
+    project: blog
+    app: admin
+spec:
+  selector:
+    project: blog
+    app: admin
+  ports:
+  - name: web
+    port: 80
+    targetPort: 80
+    protocol: TCP
+    nodePort: 30003
+  type: NodePort
