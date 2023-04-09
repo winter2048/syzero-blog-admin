@@ -163,6 +163,7 @@ export default {
       console.log(this.$route.params.id)
       if (this.data.Id === 'new') {
         this.data.title = '新增文章'
+        this.$route.meta.title = `${this.data.title}`
       } else {
         let id = this.$route.params.id
         GetBlogDetail(id).then(res => {
@@ -170,6 +171,7 @@ export default {
             return p.id
           })
           this.data.form = res
+          this.$route.meta.title = `${this.data.title}(${this.data.form.title})`
         })
       }
       GetBlogCategory({ Sort: 'order' }).then(res => {

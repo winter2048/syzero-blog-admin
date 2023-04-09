@@ -34,9 +34,7 @@ export default {
           util.cookies.set('uuid', user.userId)
           util.cookies.set('token', res)
           // 设置 vuex 用户信息
-          await dispatch('d2admin/user/set', {
-            name: user.userName
-          }, { root: true })
+          await dispatch('d2admin/user/set', user, { root: true })
           // 用户登录后从持久化数据加载一系列的设置
           await dispatch('load')
           // 结束

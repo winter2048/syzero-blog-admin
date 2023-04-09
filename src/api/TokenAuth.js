@@ -10,7 +10,7 @@ export function AccountLogin (data) {
 
 export function LogOut () {
   return request({
-    url: '/TokenAuth/LogOut',
+    url: process.env.VUE_APP_LOGIN_API + '/api/SyZero.Authorization/Auth/LogOut',
     method: 'post'
   })
 }

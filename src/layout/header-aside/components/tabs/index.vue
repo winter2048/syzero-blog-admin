@@ -29,12 +29,16 @@
     <div
       class="d2-multiple-page-control-btn"
       flex-box="0">
+          <el-tooltip
+          effect="dark"
+          content="刷新"
+          placement="bottom">
       <el-dropdown
         size="default"
         split-button
-        @click="closeAll"
+        @click="handleCleanCacheAndRefreshCurrent"
         @command="command => handleControlItemClick(command)">
-        <d2-icon name="times-circle"/>
+        <d2-icon name="refresh"/>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="left">
             <d2-icon name="arrow-left" class="d2-mr-10"/>
@@ -53,13 +57,13 @@
             全部关闭
           </el-dropdown-item>
         </el-dropdown-menu>
-      </el-dropdown>
+      </el-dropdown> </el-tooltip>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 import Sortable from 'sortablejs'
 export default {
   components: {
@@ -90,6 +94,10 @@ export default {
     ])
   },
   methods: {
+    ...mapMutations('d2admin/page', [
+      'keepAliveRemove',
+      'keepAlivePush'
+    ]),
     ...mapActions('d2admin/page', [
       'close',
       'closeLeft',
@@ -173,6 +181,18 @@ export default {
           tagName
         })
       }
+    },
+    // 清空当前页缓存并刷新此页面
+    async handleCleanCacheAndRefreshCurrent () {
+      const path = Object.assign({}, this.$route)
+      this.keepAliveRemove(path.name)
+      await this.$nextTick()
+      console.log(path)
+      await this.$router.replace({
+        path: '/admin/'
+      })
+      this.keepAlivePush(path.name)
+      await this.$router.replace(path)
     }
   },
   mounted () {

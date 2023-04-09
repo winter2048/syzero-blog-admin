@@ -31,7 +31,7 @@
                        label="电子邮箱"
                        width="220">
       </el-table-column>
-      <el-table-column prop="addTime"
+      <el-table-column prop="createTime"
                        label="创建时间"
                        width="200">
       </el-table-column>
@@ -48,6 +48,7 @@
                        width="200">
       </el-table-column>
       <el-table-column label="操作"
+                       fixed="right"
                        width="145"
                        align="center">
         <template slot-scope="scope">
@@ -78,7 +79,7 @@
         </el-form-item>
         <el-form-item label="别名"
                       :label-width="formLabelWidth">
-          <el-input v-model="form.alias"
+          <el-input v-model="form.nickName"
                     autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="描述"
@@ -140,7 +141,7 @@ export default {
     // 加载数据
     loadData () {
       GetUser({
-        Sort: 'AddTime',
+        Sort: 'CreateTime',
         Skip: (this.currentPage - 1) * this.pageSize,
         Limit: this.pageSize,
         Key: this.Key

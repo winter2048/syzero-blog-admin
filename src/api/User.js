@@ -1,11 +1,32 @@
 import request from '@/plugin/axios'
 
 /**
+ * 获取用户信息
+ */
+export function GetUserInfo () {
+  return request({
+    url: process.env.VUE_APP_LOGIN_API + '/api/SyZero.Authorization/User/UserInfo',
+    method: 'get'
+  })
+}
+
+/**
+ * 修改用户信息
+ */
+export function UpdataUserInfo (data) {
+  return request({
+    url: process.env.VUE_APP_LOGIN_API + '/api/SyZero.Authorization/User/UserInfo',
+    method: 'put',
+    data
+  })
+}
+
+/**
  * 获取所有用户
  */
 export function GetUser (params) {
   return request({
-    url: '/Service/User/All',
+    url: process.env.VUE_APP_LOGIN_API + '/api/SyZero.Authorization/User/List',
     method: 'get',
     params
   })
@@ -16,7 +37,7 @@ export function GetUser (params) {
  */
 export function AddUser (data) {
   return request({
-    url: '/Service/User',
+    url: process.env.VUE_APP_LOGIN_API + '/api/SyZero.Authorization/User',
     method: 'post',
     data
   })
@@ -27,7 +48,7 @@ export function AddUser (data) {
  */
 export function UpdataUser (data) {
   return request({
-    url: '/Service/User',
+    url: process.env.VUE_APP_LOGIN_API + `/api/SyZero.Authorization/User/${data.id}`,
     method: 'put',
     data
   })
@@ -38,29 +59,8 @@ export function UpdataUser (data) {
  */
 export function DelUser (Id) {
   return request({
-    url: '/Service/User?Id=' + Id,
+    url: process.env.VUE_APP_LOGIN_API + `/api/SyZero.Authorization/User/${Id}`,
     method: 'delete'
-  })
-}
-
-/**
- * 获取用户信息
- */
-export function GetUserInfo () {
-  return request({
-    url: process.env.VUE_APP_LOGIN_API + '/api/SyZero.Authorization/Auth/GetUserInfo',
-    method: 'get'
-  })
-}
-
-/**
- * 修改用户信息
- */
-export function UpdataUserInfo (data) {
-  return request({
-    url: '/User/UserInfo',
-    method: 'put',
-    data
   })
 }
 

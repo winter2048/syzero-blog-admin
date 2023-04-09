@@ -1,6 +1,6 @@
 <template>
   <d2-container>
-    <template slot="header">分类管理</template>
+    <template slot="header">文章管理</template>
     <el-header>
       <el-row :gutter="20">
         <el-col :span="17">
@@ -33,6 +33,7 @@
       <el-table-column type="selection"
                        width="55"> </el-table-column>
       <el-table-column prop="title"
+                       fixed
                        label="标题"> </el-table-column>
       <el-table-column prop="alias"
                        label="别名"
@@ -55,6 +56,7 @@
                        width="90"
                        align="center"> </el-table-column>
       <el-table-column label="操作"
+                       fixed="right"
                        width="145"
                        align="center">
         <template slot-scope="scope">
