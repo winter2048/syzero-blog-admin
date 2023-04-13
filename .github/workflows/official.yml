@@ -37,6 +37,7 @@ jobs:
           path: |
             ./dist/*
             ./Dockerfile
+            ./start.sh
 
   pushImage:
     needs: build
