@@ -4,7 +4,7 @@ import request from '@/plugin/axios'
  */
 export function GetBlog (params) {
   return request({
-    url: process.env.VUE_APP_API + '/api/SyZero.Blog/Article/List',
+    url: '/api/SyZero.Blog/Article/List',
     method: 'get',
     params
   })
@@ -15,7 +15,7 @@ export function GetBlog (params) {
  */
 export function GetBlogDetail (id) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Article/${id}`,
+    url: `/api/SyZero.Blog/Article/${id}`,
     method: 'get'
   })
 }
@@ -25,7 +25,7 @@ export function GetBlogDetail (id) {
  */
 export function AddBlog (data) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Article`,
+    url: `/api/SyZero.Blog/Article`,
     method: 'post',
     data
   })
@@ -35,7 +35,7 @@ export function AddBlog (data) {
  */
 export function UpdataBlog (data) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Article/${data.id}`,
+    url: `/api/SyZero.Blog/Article/${data.id}`,
     method: 'put',
     data
   })
@@ -46,7 +46,7 @@ export function UpdataBlog (data) {
  */
 export function DelBlog (Id) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Article/${Id}`,
+    url: `/api/SyZero.Blog/Article/${Id}`,
     method: 'delete'
   })
 }

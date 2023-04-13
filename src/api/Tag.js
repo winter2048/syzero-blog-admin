@@ -5,7 +5,7 @@ import request from '@/plugin/axios'
  */
 export function GetTag(params) {
   return request({
-    url: process.env.VUE_APP_API + '/api/SyZero.Blog/Tag/List',
+    url: '/api/SyZero.Blog/Tag/List',
     method: 'get',
     params
   })
@@ -16,7 +16,7 @@ export function GetTag(params) {
  */
 export function AddTag(data) {
   return request({
-    url: process.env.VUE_APP_API + '/api/SyZero.Blog/Tag',
+    url: '/api/SyZero.Blog/Tag',
     method: 'post',
     data
   })
@@ -27,7 +27,7 @@ export function AddTag(data) {
  */
 export function UpdataTag(data) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Tag/${data.id}`,
+    url: `/api/SyZero.Blog/Tag/${data.id}`,
     method: 'put',
     data
   })
@@ -38,7 +38,7 @@ export function UpdataTag(data) {
  */
 export function DelTag(Id) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Tag/${Id}`,
+    url: `/api/SyZero.Blog/Tag/${Id}`,
     method: 'delete'
   })
 }

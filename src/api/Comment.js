@@ -5,7 +5,7 @@ import request from '@/plugin/axios'
  */
 export function GetComment (params) {
   return request({
-    url: process.env.VUE_APP_API + '/api/SyZero.Blog/Comment/List',
+    url: '/api/SyZero.Blog/Comment/List',
     method: 'get',
     params
   })
@@ -16,7 +16,7 @@ export function GetComment (params) {
  */
 export function AddComment (data) {
   return request({
-    url: process.env.VUE_APP_API + '/api/SyZero.Blog/Comment',
+    url: '/api/SyZero.Blog/Comment',
     method: 'post',
     data
   })
@@ -27,7 +27,7 @@ export function AddComment (data) {
  */
 export function UpdataComment (data) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Comment/${data.id}`,
+    url: `/api/SyZero.Blog/Comment/${data.id}`,
     method: 'put',
     data
   })
@@ -38,7 +38,7 @@ export function UpdataComment (data) {
  */
 export function DelComment (Id) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Comment/${Id}`,
+    url: `/api/SyZero.Blog/Comment/${Id}`,
     method: 'delete'
   })
 }

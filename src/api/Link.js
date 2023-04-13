@@ -5,7 +5,7 @@ import request from '@/plugin/axios'
  */
 export function GetLink (params) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Link/List`,
+    url: `/api/SyZero.Blog/Link/List`,
     method: 'get',
     params
   })
@@ -16,7 +16,7 @@ export function GetLink (params) {
  */
 export function AddLink (data) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Link`,
+    url: `/api/SyZero.Blog/Link`,
     method: 'post',
     data
   })
@@ -27,7 +27,7 @@ export function AddLink (data) {
  */
 export function UpdataLink (data) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Link/${data.id}`,
+    url: `/api/SyZero.Blog/Link/${data.id}`,
     method: 'put',
     data
   })
@@ -38,7 +38,7 @@ export function UpdataLink (data) {
  */
 export function DelLink (Id) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Link/${Id}`,
+    url: `/api/SyZero.Blog/Link/${Id}`,
     method: 'delete'
   })
 }

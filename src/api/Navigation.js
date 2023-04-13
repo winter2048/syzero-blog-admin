@@ -5,7 +5,7 @@ import request from '@/plugin/axios'
  */
 export function GetNavigation (params) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Navigation/List`,
+    url: `/api/SyZero.Blog/Navigation/List`,
     method: 'get',
     params
   })
@@ -16,7 +16,7 @@ export function GetNavigation (params) {
  */
 export function AddNavigation (data) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Navigation`,
+    url: `/api/SyZero.Blog/Navigation`,
     method: 'post',
     data
   })
@@ -27,7 +27,7 @@ export function AddNavigation (data) {
  */
 export function UpdataNavigation (data) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Navigation/${data.id}`,
+    url: `/api/SyZero.Blog/Navigation/${data.id}`,
     method: 'put',
     data
   })
@@ -38,7 +38,7 @@ export function UpdataNavigation (data) {
  */
 export function DelNavigation (Id) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/Navigation/${Id}`,
+    url: `/api/SyZero.Blog/Navigation/${Id}`,
     method: 'delete'
   })
 }
