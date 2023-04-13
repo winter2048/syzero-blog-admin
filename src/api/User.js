@@ -1,11 +1,12 @@
 import request from '@/plugin/axios'
+import Vue from 'vue'
 
 /**
  * 获取用户信息
  */
 export function GetUserInfo () {
   return request({
-    url: process.env.VUE_APP_LOGIN_API + '/api/SyZero.Authorization/User/UserInfo',
+    url: Vue.prototype.$config.SERVER_URL_LOGIN + '/api/SyZero.Authorization/User/UserInfo',
     method: 'get'
   })
 }
@@ -15,7 +16,7 @@ export function GetUserInfo () {
  */
 export function UpdataUserInfo (data) {
   return request({
-    url: process.env.VUE_APP_LOGIN_API + '/api/SyZero.Authorization/User/UserInfo',
+    url: Vue.prototype.$config.SERVER_URL_LOGIN + '/api/SyZero.Authorization/User/UserInfo',
     method: 'put',
     data
   })
@@ -26,7 +27,7 @@ export function UpdataUserInfo (data) {
  */
 export function GetUser (params) {
   return request({
-    url: process.env.VUE_APP_LOGIN_API + '/api/SyZero.Authorization/User/List',
+    url: Vue.prototype.$config.SERVER_URL_LOGIN + '/api/SyZero.Authorization/User/List',
     method: 'get',
     params
   })
@@ -37,7 +38,7 @@ export function GetUser (params) {
  */
 export function AddUser (data) {
   return request({
-    url: process.env.VUE_APP_LOGIN_API + '/api/SyZero.Authorization/User',
+    url: Vue.prototype.$config.SERVER_URL_LOGIN + '/api/SyZero.Authorization/User',
     method: 'post',
     data
   })
@@ -48,7 +49,7 @@ export function AddUser (data) {
  */
 export function UpdataUser (data) {
   return request({
-    url: process.env.VUE_APP_LOGIN_API + `/api/SyZero.Authorization/User/${data.id}`,
+    url: Vue.prototype.$config.SERVER_URL_LOGIN + `/api/SyZero.Authorization/User/${data.id}`,
     method: 'put',
     data
   })
@@ -59,7 +60,7 @@ export function UpdataUser (data) {
  */
 export function DelUser (Id) {
   return request({
-    url: process.env.VUE_APP_LOGIN_API + `/api/SyZero.Authorization/User/${Id}`,
+    url: Vue.prototype.$config.SERVER_URL_LOGIN + `/api/SyZero.Authorization/User/${Id}`,
     method: 'delete'
   })
 }

@@ -2,6 +2,7 @@ import store from '@/store'
 import axios from 'axios'
 import { Message } from 'element-ui'
 import util from '@/libs/util'
+import Vue from 'vue'
 
 // 创建一个错误
 function errorCreate (msg) {
@@ -34,14 +35,15 @@ function errorLog (error) {
 }
 
 // 创建一个 axios 实例
-const service = axios.create({
-  baseURL: process.env.VUE_APP_API,
-  timeout: 5000 // 请求超时时间
-})
+// const axios = axios.create({
+//   baseURL: store ? store.config.SERVER_URL : '',
+//   timeout: 5000 // 请求超时时间
+// })
 
 // 请求拦截器
-service.interceptors.request.use(
+axios.interceptors.request.use(
   config => {
+    config.baseURL = Vue.prototype.$config ? Vue.prototype.$config.SERVER_URL : ''
     // 在请求发送之前做一些处理
     const token = util.cookies.get('token')
     // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
@@ -56,7 +58,7 @@ service.interceptors.request.use(
 )
 
 // 响应拦截器
-service.interceptors.response.use(
+axios.interceptors.response.use(
   response => {
     // dataAxios 是 axios 返回数据中的 data
     const dataAxios = response.data
@@ -106,4 +108,4 @@ service.interceptors.response.use(
   }
 )
 
-export default service
+export default axios

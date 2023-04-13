@@ -4,7 +4,7 @@ import request from '@/plugin/axios'
  */
 export function GetBasicsSetting () {
   return request({
-    url: process.env.VUE_APP_API + '/api/SyZero.Blog/Config/BasicsSetting',
+    url: '/api/SyZero.Blog/Config/BasicsSetting',
     method: 'get'
   })
 }
@@ -14,7 +14,7 @@ export function GetBasicsSetting () {
  */
 export function GetSeoSetting () {
   return request({
-    url: process.env.VUE_APP_API + '/api/SyZero.Blog/Config/SeoSetting',
+    url: '/api/SyZero.Blog/Config/SeoSetting',
     method: 'get'
   })
 }
@@ -24,7 +24,7 @@ export function GetSeoSetting () {
  */
 export function UpdataBasicsSetting (data) {
   return request({
-    url: process.env.VUE_APP_API + '/api/SyZero.Blog/Config/BasicsSetting',
+    url: '/api/SyZero.Blog/Config/BasicsSetting',
     method: 'post',
     data
   })
@@ -35,7 +35,7 @@ export function UpdataBasicsSetting (data) {
  */
 export function UpdataSeoSetting (data) {
   return request({
-    url: process.env.VUE_APP_API + '/api/SyZero.Blog/Config/SeoSetting',
+    url: '/api/SyZero.Blog/Config/SeoSetting',
     method: 'post',
     data
   })
@@ -45,7 +45,7 @@ export function UpdataSeoSetting (data) {
  */
 export function GetOtherSetting () {
   return request({
-    url: process.env.VUE_APP_API + '/api/SyZero.Blog/Config/OtherSetting',
+    url: '/api/SyZero.Blog/Config/OtherSetting',
     method: 'get'
   })
 }
@@ -54,7 +54,7 @@ export function GetOtherSetting () {
  */
 export function UpdataOtherSetting (data) {
   return request({
-    url: process.env.VUE_APP_API + '/api/SyZero.Blog/Config/OtherSetting',
+    url: '/api/SyZero.Blog/Config/OtherSetting',
     method: 'post',
     data
   })
@@ -65,7 +65,7 @@ export function UpdataOtherSetting (data) {
  */
 export function GetAliyunSmsConfig () {
   return request({
-    url: process.env.VUE_APP_API + '/api/SyZero.Blog/Config/AliyunSmsConfig',
+    url: '/api/SyZero.Blog/Config/AliyunSmsConfig',
     method: 'get'
   })
 }
@@ -74,7 +74,7 @@ export function GetAliyunSmsConfig () {
  */
 export function UpdataAliyunSmsConfig (data) {
   return request({
-    url: process.env.VUE_APP_API + '/api/SyZero.Blog/Config/AliyunSmsConfig',
+    url: '/api/SyZero.Blog/Config/AliyunSmsConfig',
     method: 'post',
     data
   })

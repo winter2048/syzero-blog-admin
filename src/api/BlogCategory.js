@@ -5,7 +5,7 @@ import request from '@/plugin/axios'
  */
 export function GetBlogCategory(params) {
   return request({
-    url: process.env.VUE_APP_API + '/api/SyZero.Blog/ArticleCategory/List',
+    url: '/api/SyZero.Blog/ArticleCategory/List',
     method: 'get',
     params
   })
@@ -16,7 +16,7 @@ export function GetBlogCategory(params) {
  */
 export function AddBlogCategory(data) {
   return request({
-    url: process.env.VUE_APP_API + '/api/SyZero.Blog/ArticleCategory',
+    url: '/api/SyZero.Blog/ArticleCategory',
     method: 'post',
     data
   })
@@ -27,7 +27,7 @@ export function AddBlogCategory(data) {
  */
 export function UpdataBlogCategory(data) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/ArticleCategory/${data.id}`,
+    url: `/api/SyZero.Blog/ArticleCategory/${data.id}`,
     method: 'put',
     data
   })
@@ -38,7 +38,7 @@ export function UpdataBlogCategory(data) {
  */
 export function DelBlogCategory(Id) {
   return request({
-    url: process.env.VUE_APP_API + `/api/SyZero.Blog/ArticleCategory/${Id}`,
+    url: `/api/SyZero.Blog/ArticleCategory/${Id}`,
     method: 'delete'
   })
 }
