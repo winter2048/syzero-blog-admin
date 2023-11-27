@@ -2,7 +2,8 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const VueFilenameInjector = require('@d2-projects/vue-filename-injector')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
 const forElementUI = require('webpack-theme-color-replacer/forElementUI')
-const cdnDependencies = require('./dependencies-cdn')
+//const cdnDependencies = require('./dependencies-cdn-jsdelivr')
+const cdnDependencies = []
 
 // 拼接路径
 const resolve = dir => require('path').join(__dirname, dir)
