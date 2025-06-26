@@ -6,13 +6,13 @@
     "VUE_APP_TITLE": "SyZeroBlog-Admin (Development)"
   },
   "Production": {
-    "SERVER_URL": "http://192.168.2.120:5003",
-    "SERVER_URL_LOGIN": "http://192.168.2.120:5001",
+    "SERVER_URL": "https://api.syzero.com",
+    "SERVER_URL_LOGIN": "https://api.syzero.com",
     "VUE_APP_TITLE": "SyZeroBlog-Admin"
   },
   "Test": {
-    "SERVER_URL": "http://192.168.2.130:5003",
-    "SERVER_URL_LOGIN": "http://192.168.2.130:5001",
+    "SERVER_URL": "https://api.test.syzero.com",
+    "SERVER_URL_LOGIN": "https://api.test.syzero.com",
     "VUE_APP_TITLE": "SyZeroBlog-Admin (Test)"
   }
 }
