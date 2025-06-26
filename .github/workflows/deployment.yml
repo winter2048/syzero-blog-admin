@@ -33,6 +33,10 @@ env:
   IMAGE_NAME: syzero.blog.admin
   IMAGE_VERSION: dev
   ENVIRONMENT: Test
+  CONTAINER_NAME: syzero.blog.admin
+  CONTAINER_PORT: 6001
+  CONTAINER_TEST_PORT: 7001
+  CONTAINER_PROD_PORT: 6001
 
 jobs:
   deploy:
@@ -51,14 +55,11 @@ jobs:
             environment=${{ inputs.environment }}
           fi
           if [ "$environment" == "Production" ]; then
-            echo "SSH_HOST=${{ secrets.SSH_HOST }}" >> $GITHUB_ENV
-            echo "SSH_USERNAME=${{ secrets.SSH_USERNAME }}" >> $GITHUB_ENV
-            echo "SSH_PASSWORD=${{ secrets.SSH_PASSWORD }}" >> $GITHUB_ENV
+            echo "CONTAINER_PORT=${{ env.CONTAINER_PROD_PORT }}" >> $GITHUB_ENV
           fi
           if [ "$environment" == "Test" ]; then
-            echo "SSH_HOST=${{ secrets.SSH_HOST_TEST }}" >> $GITHUB_ENV
-            echo "SSH_USERNAME=${{ secrets.SSH_USERNAME_TEST }}" >> $GITHUB_ENV
-            echo "SSH_PASSWORD=${{ secrets.SSH_PASSWORD_TEST }}" >> $GITHUB_ENV
+            echo "CONTAINER_PORT=${{ env.CONTAINER_TEST_PORT }}" >> $GITHUB_ENV
+            echo "CONTAINER_NAME=${{ env.CONTAINER_NAME }}-test" >> $GITHUB_ENV
           fi
 
       - name: executing remote ssh commands using password
@@ -68,8 +69,8 @@ jobs:
           username: ${{ env.SSH_USERNAME }}
           password: ${{ env.SSH_PASSWORD }}
           script: |
-            docker login harbor.syzero.com -u ${{ secrets.HARBOR_DOCKERHUB_USERNAME }} -p ${{ secrets.HARBOR_DOCKERHUB_TOKEN }}
-            docker stop ${{ env.IMAGE_NAME }}
-            docker rm ${{ env.IMAGE_NAME }}
+            docker login harbor.syzero.com -u '${{ secrets.HARBOR_DOCKERHUB_USERNAME }}' -p '${{ secrets.HARBOR_DOCKERHUB_TOKEN }}'
+            docker stop ${{ env.CONTAINER_NAME }}
+            docker rm ${{ env.CONTAINER_NAME }}
             docker pull harbor.syzero.com/syzero/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
-            docker run -d -p 6001:80 --name=${{ env.IMAGE_NAME }} --restart=always -e "UI_ENVIRONMENT=${{ env.ENVIRONMENT }}" harbor.syzero.com/syzero/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
+            docker run -d -p ${{ env.CONTAINER_PORT }}:80 --name=${{ env.CONTAINER_NAME }} --restart=always -e "UI_ENVIRONMENT=${{ env.ENVIRONMENT }}" --network "SyZero-${{ env.ENVIRONMENT }}" harbor.syzero.com/syzero/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
