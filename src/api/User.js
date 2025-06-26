@@ -27,7 +27,7 @@ export function UpdataUserInfo (data) {
  */
 export function GetUser (params) {
   return request({
-    url: Vue.prototype.$config.SERVER_URL_LOGIN + '/api/SyZero.Authorization/User/List',
+    url: Vue.prototype.$config.SERVER_URL_LOGIN + '/api/SyZero.Authorization/User',
     method: 'get',
     params
   })

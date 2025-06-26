@@ -5,7 +5,7 @@ import request from '@/plugin/axios'
  */
 export function GetComment (params) {
   return request({
-    url: '/api/SyZero.Blog/Comment/List',
+    url: '/api/SyZero.Blog/Comment',
     method: 'get',
     params
   })

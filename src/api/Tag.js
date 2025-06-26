@@ -5,7 +5,7 @@ import request from '@/plugin/axios'
  */
 export function GetTag(params) {
   return request({
-    url: '/api/SyZero.Blog/Tag/List',
+    url: '/api/SyZero.Blog/Tag',
     method: 'get',
     params
   })

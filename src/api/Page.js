@@ -4,7 +4,7 @@ import request from '@/plugin/axios'
  */
 export function GetPage (params) {
   return request({
-    url: `/api/SyZero.Blog/Page/List`,
+    url: `/api/SyZero.Blog/Page`,
     method: 'get',
     params
   })

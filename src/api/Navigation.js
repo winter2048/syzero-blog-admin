@@ -5,7 +5,7 @@ import request from '@/plugin/axios'
  */
 export function GetNavigation (params) {
   return request({
-    url: `/api/SyZero.Blog/Navigation/List`,
+    url: `/api/SyZero.Blog/Navigation`,
     method: 'get',
     params
   })
